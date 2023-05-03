@@ -132,11 +132,11 @@ const Sidebar = ({
           <Box width="100%">
             <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
-                <Box dispay="flex">
+                <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
-                    LAPROMECOM
+                    LaProm
                   </Typography>
-                  <IconButton onClick={() => setIsSidebarOpen(false)}>
+                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <ChevronLeft />
                   </IconButton>
                 </Box>
@@ -149,7 +149,6 @@ const Sidebar = ({
             </Box>
             <List>
               {navItems.map(({ text, icon }) => {
-                // looping over navItems
                 if (!icon) {
                   return (
                     <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
@@ -157,16 +156,14 @@ const Sidebar = ({
                     </Typography>
                   );
                 }
-                // if the icon is set to null
-
                 const lcText = text.toLowerCase();
 
                 return (
                   <ListItem key={text} disablePadding>
+                    {/* everytime when you cick its setActive is lcText */}
                     <ListItemButton
-                      OnClick={() => {
+                      onClick={() => {
                         navigate(`/${lcText}`);
-                        //this is to navigate the user to the page
                         setActive(lcText);
                       }}
                       sx={{

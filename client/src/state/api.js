@@ -10,9 +10,13 @@ export const api = createApi({
       query: (id) => `general/user/${id}`,
       providesTags: ["User"],
     }),
+    getProducts: build.query({
+      query: () => "client/products",
+      providesTags: ["Products"],
+    }),
   }),
 });
 
 // useGetUserQuery is basically the name of the api 'getUser' with a
 //prefix of use and suffix of Query
-export const { useGetUserQuery } = api;
+export const { useGetUserQuery, useGetProductsQuery } = api;

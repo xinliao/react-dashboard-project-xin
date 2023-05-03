@@ -29,20 +29,21 @@ const Layout = () => {
 
   return (
     <Box>
-      <Navbar
+      <Sidebar
         user={data || {}}
+        isNonMobile={isNonMobile}
+        drawerWidth="250px"
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       />
-      <Stack justifyContent="space-around">
-        <Sidebar
+      <Box>
+        <Navbar
           user={data || {}}
-          isNonMobile={isNonMobile}
-          drawerWidth="250px"
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
-      </Stack>
+        <Outlet />
+      </Box>
     </Box>
   );
 };
