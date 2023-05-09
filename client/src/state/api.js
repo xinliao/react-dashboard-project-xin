@@ -4,7 +4,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:9000" }),
 
   reducerPath: "adminApi",
-  tagTypes: ["User"],
+  tagTypes: ["User", "Products", "Customer"],
   endpoints: (build) => ({
     getUser: build.query({
       query: (id) => `general/user/${id}`,
@@ -14,9 +14,14 @@ export const api = createApi({
       query: () => "client/products",
       providesTags: ["Products"],
     }),
+    getCustomers: build.query({
+      query: () => "client/customers",
+      providesTags: ["Customers"],
+    }),
   }),
 });
 
 // useGetUserQuery is basically the name of the api 'getUser' with a
 //prefix of use and suffix of Query
-export const { useGetUserQuery, useGetProductsQuery } = api;
+export const { useGetUserQuery, useGetProductsQuery, useGetCustomersQuery } =
+  api;

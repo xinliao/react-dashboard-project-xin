@@ -16,6 +16,7 @@ import Header from "components/Header";
 import { useGetProductsQuery } from "state/api";
 import { useState } from "react";
 
+// the card component
 const Product = ({
   _id,
   name,
@@ -96,10 +97,10 @@ function Products() {
   return (
     <Box sx={{ mt: "120px", pl: "30px" }}>
       <Header title="PRODUCTS" subtitle="all the products" />
-      {/* || this is the or operator */}
+      {/* || this is the 'or' operator */}
       {data || !isLoading ? (
         <Box
-          mt="20px"
+          mt="10px"
           display="grid"
           gridTemplateColumns="repeat(4,minmax(0,1fr))"
           justifyContent="space-between"

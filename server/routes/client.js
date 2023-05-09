@@ -1,6 +1,7 @@
 import express from "express";
 import Product from "../models/Product.js";
 import ProductStat from "../models/ProductStat.js";
+import User from "../models/User.js";
 
 const router = express.Router();
 
@@ -24,6 +25,15 @@ router.get("/products", async (req, res) => {
     );
 
     res.status(200).json(productsWithStats);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+router.get("/customers", async (req, res) => {
+  try {
+    const customers = await User.find({ role: "user" }).select("-password");
+    res.status(200).json(customers);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
