@@ -3,7 +3,7 @@ import { ResponsivePie } from "@nivo/pie";
 import { Box, Typography, useTheme } from "@mui/material";
 import { useGetSalesQuery } from "state/api";
 
-const BreakdownChart = () => {
+const BreakdownChart = (isDashboard = false) => {
   const { data, isLoading } = useGetSalesQuery();
   const theme = useTheme();
 
@@ -25,7 +25,7 @@ const BreakdownChart = () => {
   );
   return (
     <Box
-      height={isDashboard ? "400px" : "100%"}
+      height={isDashboard ? "600px" : "800px"}
       width={undefined}
       minHeight={isDashboard ? "325px" : undefined}
       minWidth={isDashboard ? "325px" : undefined}

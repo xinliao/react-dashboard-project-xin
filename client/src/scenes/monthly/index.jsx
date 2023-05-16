@@ -1,4 +1,4 @@
-=import {
+import {
   FormControl,
   MenuItem,
   InputLabel,
@@ -35,32 +35,28 @@ const Monthly = () => {
     };
 
     Object.values(monthlyData).forEach(({ month, totalSales, totalUnits }) => {
-
-        //loops through and adds the the data array
-        totalSalesLine.data = [
-          ...totalSalesLine.data,
-          { x: month, y: totalSales },
-        ];
-        totalUnitsLine.data = [
-          ...totalUnitsLine.data,
-          { x: month, y: totalSales },
-        ];
-      
+      //loops through and adds the the data array
+      totalSalesLine.data = [
+        ...totalSalesLine.data,
+        { x: month, y: totalSales },
+      ];
+      totalUnitsLine.data = [
+        ...totalUnitsLine.data,
+        { x: month, y: totalUnits },
+      ];
     });
 
     const formattedData = [totalSalesLine, totalUnitsLine];
     console.log(totalSalesLine, "units" + totalUnitsLine);
 
     return [formattedData];
-  }, [data, startDate, endDate]);
+  }, [data]);
 
   return (
     <Box m="1.5rem 2.5rem">
       <Header title="Monthly SALES" subtitle="Chart of Monthly sales" />
       <Box height="75vh">
-        <Box display="flex" justifyContent="flex-end">
-         
-        </Box>
+        <Box display="flex" justifyContent="flex-end"></Box>
 
         {data ? (
           <ResponsiveLine
