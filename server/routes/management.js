@@ -31,6 +31,7 @@ router.get("/performance/:id", async (req, res) => {
       },
       { $unwind: "$affiliateStats" },
     ]);
+    console.log("userWithStatsssss", userWithStats);
 
     const saleTransactions = await Promise.all(
       userWithStats[0].affiliateStats.affiliateSales.map((id) => {

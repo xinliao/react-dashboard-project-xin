@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Box, useTheme } from "@mui/material";
 import CustomColumnMenu from "components/DataGridCustomColumnMenu";
 
-const Admin = () => {
+const Performance = () => {
   const theme = useTheme();
   const userId = useSelector((state) => state.global.userId);
   const { data, isLoading } = useGetPerformanceQuery(userId);
@@ -19,58 +19,46 @@ const Admin = () => {
       flex: 1,
     },
     {
-      field: "name",
-      headerName: "Name",
+      field: "userId",
+      headerName: "User ID",
       flex: 0.4,
     },
     {
-      field: "email",
-      headerName: "Email",
+      field: "createdAt",
+      headerName: "Created At",
       flex: 1,
     },
+
     {
-      field: "phoneNumber",
-      headerName: "Phone Number",
-      flex: 0.4,
-      renderCell: (params) => {
-        return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1)$2-$3");
-      },
-    },
-    {
-      field: "country",
-      headerName: "Country",
+      field: "products",
+      headerName: "No of Products",
       flex: 0.4,
     },
     {
-      field: "occupation",
-      headerName: "Occupation",
+      field: "cost",
+      headerName: "Cost",
       flex: 1,
-    },
-    {
-      field: "role",
-      headerName: "Role",
-      flex: 0.5,
     },
   ];
   return (
     <Box m="1.5rem 2.5rem">
       <Header
         title="PERFORMANCE"
-        subtitle="Managing Admins and List of Admins"
+        subtitle="Track your affiliate sales performance"
       />
-      {/* <Box mt="40px" height="75vh">
+      <Box mt="40px" height="75vh">
         <DataGrid
           laoding={isLoading || !data}
           getRowId={(row) => row._id}
-          rows={data || []}
+          rows={(data && data.sales) || []}
           columns={columns}
           components={{
             ColumnMenu: CustomColumnMenu,
           }}
         />
-      </Box> */}
+      </Box>
     </Box>
   );
 };
 
-export default Admin;
+export default Performance;
